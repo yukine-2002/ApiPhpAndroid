@@ -31,6 +31,8 @@ class AdapterUser(private val context: Context)  : RecyclerView.Adapter<AdapterU
     class viewHolder(view : View) : RecyclerView.ViewHolder(view){
         var name = view.findViewById<TextView>(R.id.name)
         var email = view.findViewById<TextView>(R.id.usernames)
+        var diachi = view.findViewById<TextView>(R.id.diachi)
+        var sdt = view.findViewById<TextView>(R.id.sdt)
         var mMenus = view.findViewById<ImageView>(R.id.mMenus)
     }
 
@@ -44,6 +46,8 @@ class AdapterUser(private val context: Context)  : RecyclerView.Adapter<AdapterU
         Log.e("person",person.username)
         holder.name.text = person.fullname
         holder.email.text = person.username
+        holder.diachi.text = person.diachi
+        holder.sdt.text = person.sdt
         holder.mMenus.setOnClickListener { mPopMenu(it,person,position) }
     }
 
@@ -53,7 +57,6 @@ class AdapterUser(private val context: Context)  : RecyclerView.Adapter<AdapterU
         popupMenu.inflate(R.menu.show_menu)
         var sharedPreferences = context.getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE)
         var user = sharedPreferences.getString("info","")
-
 
 
         var gson  = Gson()
